@@ -1,16 +1,18 @@
-import Head from 'next/head';
-import { Fragment } from 'react';
-import { Hero } from '../components/home/Hero';
+import React, { Fragment } from 'react';
+import HerbsHero from '../components/herbs/HerbsHero';
+import List from '../components/herbs/List';
 import fetchEntries from '../lib/client';
 
-export default function Home({ herbs }) {
-  console.log(herbs);
+const herbs = ({ herbs }) => {
   return (
     <Fragment>
-      <Hero />
+      <HerbsHero />
+      <List herbs={herbs} />
     </Fragment>
   );
-}
+};
+
+export default herbs;
 
 export async function getServerSideProps() {
   const res = await fetchEntries();
